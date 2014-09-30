@@ -4,10 +4,8 @@
   <meta charset="utf-8">
   <title>Talk OWA App</title>
   <script>
-    // Trun it to false to always install 'normal' package
-    var isFFOS = ("mozApps" in navigator && navigator.userAgent.search("Mobile") != -1);
 
-    if ( isFFOS ) {
+    if ( "mozApps" in navigator ) {
       navigator.mozApps.installPackage('http://mte90.github.io/Talk-OWA-App/manifest.webapp');
     } else {
       alert("You're not using a Mozilla browser");
