@@ -1,20 +1,9 @@
 {
   "name": "Talk-OWA-App",
-  "description": "Talk OWA Maker Faire 2014",
-  "launch_path": "/index.html",
-  "icons": {
-    "128": "/images/app_icon_128.png",
-    "60": "/images/app_icon_60.png"
-  },
+  "package_path": "https://github.com/Mte90/Talk-OWA-App/archive/master.zip",
   "version": "1.0",
   "developer": {
     "name": "Daniele Scasciafratte",
     "url": "http://mte90.net"
   },
-  "default_locale": "en",
-  "permissions": {
-      "desktop-notification": {
-          "description": "To show notifications"
-          }
-      }
 }

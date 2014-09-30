@@ -1,75 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
-    <title>
-      Arduino Remote
-    </title>
-    <!-- Building blocks -->
-    <link rel="stylesheet" href="style/buttons.css">
-    <link rel="stylesheet" href="style/headers.css">
-    <link rel="stylesheet" href="style/input_areas.css">
-    <link rel="stylesheet" href="style/switches.css">
-    <link rel="stylesheet" href="style/drawer.css">
-    <link rel="stylesheet" href="style/lists.css">
-        
-    <!-- Util CSS: some extra tricks -->
-    <link rel="stylesheet" href="util.css">
-    <link rel="stylesheet" href="cross_browser.css">
-    <link rel="stylesheet" href="style.css">
-    
-  </head>
-  <body>
-    
-    <section id="drawer" role="region" data-position="current">
-      <header class="fixed">
-        <h1>
-          Arduino Remote
-        </h1>
-      </header>
-      <article class="content scrollable header">
-        <section data-type="list">
-          <header>
-            IP
-          </header>
-          <input type="text" class="ip" value="192.168.0.8">
-          <header>
-            Led
-          </header>
-          <ul>
-            <li>
-              <label class="pack-switch">
-                <input type="checkbox" class="led-red" autocomplete="off">
-                <span>
-                  Led Red
-                </span>
-              </label>
-            </li>
-            <li class="no-border">
-              <label class="pack-switch">
-                <input type="checkbox" class="led-green" autocomplete="off">
-                <span>
-                  Led Green
-                </span>
-              </label>
-            </li>
-            <li class="no-border">
-            <a class="recommend notification button" role="button">
-                Notification
-              </a>
-            </li>
-            <li>
-            <small>Sketch: <a href="https://gist.github.com/Mte90/ba94ae6f383afda71b13">https://gist.github.com/Mte90/ba94ae6f383afda71b13</a></small><br>
-            <small>App Repo: <a href="https://github.com/Mte90/Talk-OWA-App">https://github.com/Mte90/Talk-OWA-App</a></small>
-            </li>
-          </ul>
-        </section>
-      </article>
-    </section>
-    
-    <script type="text/javascript" defer src="js/localforage.js"></script>
-    <script type="text/javascript" defer src="js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" defer src="js/app.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Building Blocks app</title>
+  <script>
+    // Trun it to false to always install 'normal' package
+    var supportHIDPI = false;
+    var isFFOS = ("mozApps" in navigator && navigator.userAgent.search("Mobile") != -1);
+
+    if ( isFFOS ) {
+      navigator.mozApps.installPackage('http://mte90.github.io/Talk-OWA-App/manifest.webapp');
+    } else {
+      alert("You're not using a Mozilla browser");
+    }
+
+  </script>
+</head>
+<body>
+</body>
 </html>
