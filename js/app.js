@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    var url_green_analog, rl_green_digital, url_red_analog, url_red_digital;
+    var url_green_analog, url_green_digital, url_red_analog, url_red_digital;
     //Get ip saved
     if(localStorage.getItem('ip') !== '') {
         $( ".ip" ).val(localStorage.getItem('ip'));
