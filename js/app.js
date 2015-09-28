@@ -1,42 +1,32 @@
-$( document ).ready(function() {
-    var url_green_analog, url_green_digital, url_red_analog, url_red_digital;
+$(document).ready(function() {
+    var url_custom_digital;
+
+    //Get saved custom number
+    if(localStorage.getItem('led-custom-number') !== '') {
+        $( ".led-custom-number" ).val(localStorage.getItem('led-custom-number'));
+    }
+
     //Get ip saved
     if(localStorage.getItem('ip') !== '') {
         $( ".ip" ).val(localStorage.getItem('ip'));
         path($( ".ip" ).val());
     }
+
     //Save the ip on change
     $( ".ip" ).change(function() {
         localStorage.setItem('ip', $(this).val());
         path($(this).val());
     });
-    //Set the state of checkbox for Green led
-    $.get( url_green_digital, function( data ) { 
-        $('.led-green').attr('checked', check_bool(data));
-            $('.led-green').click(function() {
-                if($(this).is(':checked'))  {
-                    url_green_ = url_green_analog + '200';
-                } else {
-                    url_green_ = url_green_analog + '0';
-                }
-                $.get( url_green_, function( data ) {  });
-            });
+
+    // Save the custom number on change
+    $(".led-custom-number").change(function() {
+        localStorage.setItem('led-custom-number', $(this).val());
+        path($( ".ip" ).val());
     });
-    //Set the state of checkbox for Red led
-    $.get( url_red_digital, function( data ) { 
-        $('.led-red').attr('checked', check_bool(data));
-            $('.led-red').click(function() {
-                if($(this).is(':checked'))  {
-                    url_red_ = url_red_analog + '200';
-                } else {
-                    url_red_ = url_red_analog + '0';
-                }
-                $.get( url_red_, function( data ) {  });
-            });
-    });
+    
     //Notification
     $('.notification').click(function() {
-        $.get( url_green_digital, function( data ) { 
+        $.get(url_custom_digital, function( data ) { 
             if (Notification.permission !== 'denied') {
                 Notification.requestPermission(function (permission) {
                     if(!('permission' in Notification)) {
@@ -45,39 +35,27 @@ $( document ).ready(function() {
                 });
             }
             if (Notification.permission === 'granted') {
-                new Notification('Pin 6 Green Led', {
-                    body : 'Pin state: ' + data
-                });
-            }
-        });
-        $.get( url_red_digital, function( data ) { 
-            if (Notification.permission !== 'denied') {
-                Notification.requestPermission(function (permission) {
-                    if(!('permission' in Notification)) {
-                        Notification.permission = permission;
-                    }
-                });
-            }
-            if (Notification.permission === 'granted') {
-                new Notification('Pin 3 Red Led', {
-                    body : 'Pin state: ' + data
+                new Notification('Pin ' + $(".led-custom-number").val() +  ' Led', {
+                    body : 'Pin state: ' + data.return_value
                 });
             }
         });
     });
-    //Cute function for check the value on the rest server
-    function check_bool(data) {
-        if(data !== '0' ) {
-            return true;
+
+    //Control the custom led
+    $('.led-custom').click(function() {
+        var url_custom_;
+        if($(this).is(':checked'))  {
+            url_custom_ = url_custom_digital + '/1';
         } else {
-            return false;
+            url_custom_ = url_custom_digital + '/0';
         }
-    }
+        $.get( url_custom_, null);
+    });
     //Set the path
+
     function path(ip) {
-        url_green_analog = 'http://' + ip + '/arduino/analog/6/';
-        url_green_digital = 'http://' + ip + '/arduino/digital/6/';
-        url_red_analog = 'http://' + ip + '/arduino/analog/3/';
-        url_red_digital = 'http://' + ip + '/arduino/digital/3/';
+        url_custom_digital = 'http://' + ip + '/arduino/digital/' +
+                             $('.led-custom-number').val();
     }
 });

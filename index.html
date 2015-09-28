@@ -13,15 +13,15 @@
     <link rel="stylesheet" href="style/switches.css">
     <link rel="stylesheet" href="style/drawer.css">
     <link rel="stylesheet" href="style/lists.css">
-        
+
     <!-- Util CSS: some extra tricks -->
     <link rel="stylesheet" href="util.css">
     <link rel="stylesheet" href="cross_browser.css">
     <link rel="stylesheet" href="style.css">
-    
+
   </head>
   <body>
-    
+
     <section id="drawer" role="region" data-position="current">
       <header class="fixed">
         <h1>
@@ -35,39 +35,36 @@
           </header>
           <input type="text" class="ip" value="192.168.0.8">
           <header>
+            Custom Led Number
+          </header>
+          <input type="number" class="led-custom-number" value="8">
+          <header>
             Led
           </header>
           <ul>
             <li>
               <label class="pack-switch">
-                <input type="checkbox" class="led-red" autocomplete="off">
+                <input type="checkbox" class="led-custom" autocomplete="off">
                 <span>
-                  Led Red
+                  Custom
                 </span>
               </label>
-            </li>
-            <li class="no-border">
-              <label class="pack-switch">
-                <input type="checkbox" class="led-green" autocomplete="off">
-                <span>
-                  Led Green
-                </span>
-              </label>
-            </li>
+            </li><br>
             <li class="no-border">
             <a class="recommend notification button" role="button">
                 Notification
               </a>
-            </li>
+            </li><br>
             <li>
-            <small>Sketch: <a href="https://gist.github.com/Mte90/ba94ae6f383afda71b13">https://gist.github.com/Mte90/ba94ae6f383afda71b13</a></small><br>
-            <small>App Repo: <a href="https://github.com/Mte90/Talk-OWA-App">https://github.com/Mte90/Talk-OWA-App</a></small>
+              <small>Sketch: <a href="https://gist.github.com/Mte90/ba94ae6f383afda71b13">https://gist.github.com/Mte90/ba94ae6f383afda71b13</a></small><br>
+              <small>App Repo: <a href="https://github.com/michelesr/Talk-OWA-App">https://github.com/michelesr/Talk-OWA-App</a></small></br>
+              <small>Original App Repo: <a href="https://github.com/Mte90/Talk-OWA-App">https://github.com/Mte90/Talk-OWA-App</a></small>
             </li>
           </ul>
         </section>
       </article>
     </section>
-    
+
     <script type="text/javascript" defer src="js/localforage.js"></script>
     <script type="text/javascript" defer src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" defer src="js/app.js"></script>
