@@ -1,27 +1,30 @@
 $(document).ready(function() {
     var url_custom_digital;
 
-    //Get saved custom number
-    if(localStorage.getItem('led-custom-number') !== '') {
-        $( ".led-custom-number" ).val(localStorage.getItem('led-custom-number'));
-    }
-
     //Get ip saved
     if(localStorage.getItem('ip') !== '') {
         $( ".ip" ).val(localStorage.getItem('ip'));
-        path($( ".ip" ).val());
+        path()
+    }
+
+    //Get saved custom number
+    if(localStorage.getItem('led-custom-number') !== '') {
+        $( ".led-custom-number" ).val(localStorage.getItem('led-custom-number'));
+        init_pin();
     }
 
     //Save the ip on change
     $( ".ip" ).change(function() {
         localStorage.setItem('ip', $(this).val());
-        path($(this).val());
+        path();
+        init_pin();
     });
 
     // Save the custom number on change
     $(".led-custom-number").change(function() {
         localStorage.setItem('led-custom-number', $(this).val());
-        path($( ".ip" ).val());
+        path();
+        init_pin();
     });
     
     //Notification
@@ -54,8 +57,18 @@ $(document).ready(function() {
     });
     //Set the path
 
-    function path(ip) {
+    // set the URL for the ON/OFF GET request
+    function path() {
+        ip = $('.ip').val();
         url_custom_digital = 'http://' + ip + '/arduino/digital/' +
                              $('.led-custom-number').val();
+    }
+
+    // set OUTPUT mode for the selected pin
+    function init_pin() {
+        ip = $('.ip').val();
+        pin = $('.led-custom-number').val();
+        console.log("Init pin" + pin + " on " + ip);
+        $.get('http://' + ip + '/arduino/mode/' + pin + '/o', null)
     }
 });
