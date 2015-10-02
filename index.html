@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Talk OWA App</title>
+  <meta charset='utf-8'>
+  <title>Arduino Remote</title>
   <script>
-
-    if ( "mozApps" in navigator ) {
-      navigator.mozApps.installPackage('http://mte90.github.io/Talk-OWA-App/manifest.webapp');
-    } else {
-      alert("You're not using a Mozilla browser");
-    }
-
+    document.addEventListener( 'DOMContentLoaded' , function(event) {
+        document.querySelector( '.master' ).addEventListener('click', function () {
+            if ( 'mozApps' in navigator ) {
+            navigator.mozApps.installPackage( 'http://mte90.github.io/Arduino-Remote/manifest.webapp' );
+            } else {
+            alert( 'You\'re not using a Mozilla browser' );
+            }
+        }); 
+        document.querySelector( '.arest' ).addEventListener('click', function () {
+            if ( 'mozApps' in navigator ) {
+            navigator.mozApps.installPackage( 'http://mte90.github.io/Arduino-Remote/manifest-arest.webapp' );
+            } else {
+            alert( 'You\'re not using a Mozilla browser' );
+            }
+        }); 
+    });
   </script>
 </head>
 <body>
+Install the app for <button class='master'>Arduino Yun Remote</button><br><br>
+Install the app for <button class='arest'>aRest Remote</button><br>
 </body>
 </html>
