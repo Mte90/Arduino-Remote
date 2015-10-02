@@ -1,8 +1,11 @@
 $( document ).ready(function() {
-    var url_green_analog, url_green_digital, url_red_analog, url_red_digital;
+    var url_green_digital, url_red_digital;
     //Get ip saved
     if(localStorage.getItem('ip') !== '') {
         $( ".ip" ).val(localStorage.getItem('ip'));
+        path($( ".ip" ).val());
+    } else {
+        $( ".ip" ).val('192.168.240.1');
         path($( ".ip" ).val());
     }
     //Save the ip on change
@@ -75,9 +78,7 @@ $( document ).ready(function() {
     }
     //Set the path
     function path(ip) {
-        url_green_analog = 'http://' + ip + '/arduino/analog/6/';
         url_green_digital = 'http://' + ip + '/arduino/digital/6/';
-        url_red_analog = 'http://' + ip + '/arduino/analog/3/';
         url_red_digital = 'http://' + ip + '/arduino/digital/3/';
     }
 });
