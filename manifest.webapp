@@ -1,6 +1,6 @@
 {
   "name": "Arduino-Remote",
-  "package_path": "http://mte90.github.io/Arduino-Remote/Arduino-Remote-master.zip",
+  "package_path": "https://mte90.github.io/Arduino-Remote/Arduino-Remote-master.zip",
   "version": "1.0",
   "developer": {
     "name": "Daniele Scasciafratte",

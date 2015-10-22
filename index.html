@@ -7,16 +7,24 @@
     document.addEventListener( 'DOMContentLoaded' , function(event) {
         document.querySelector( '.master' ).addEventListener('click', function () {
             if ( 'mozApps' in navigator ) {
-            navigator.mozApps.installPackage( 'http://mte90.github.io/Arduino-Remote/manifest.webapp' );
+                var installRequest = navigator.mozApps.install( 'https://mte90.github.io/Arduino-Remote/manifest.webapp',  ['receipt'] );
+                installRequest.onerror = function(err) {
+                    console.log(err);
+                    console.log(this);
+                };
             } else {
-            alert( 'You\'re not using a Mozilla browser' );
+                alert( 'You\'re not using a Mozilla browser' );
             }
         }); 
         document.querySelector( '.arest' ).addEventListener('click', function () {
             if ( 'mozApps' in navigator ) {
-            navigator.mozApps.installPackage( 'http://mte90.github.io/Arduino-Remote/manifest-arest.webapp' );
+                var installRequest = navigator.mozApps.install( 'https://mte90.github.io/Arduino-Remote/manifest-arest.webapp', ['receipt']  );
+                installRequest.onerror = function(err) {
+                    console.log(err);
+                    console.log(this);
+                };
             } else {
-            alert( 'You\'re not using a Mozilla browser' );
+                alert( 'You\'re not using a Mozilla browser' );
             }
         }); 
     });
